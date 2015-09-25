@@ -14,7 +14,7 @@ import org.springframework.web.servlet.view.UrlBasedViewResolver;
  */
 
 @Configuration
-@ComponentScan("")
+@ComponentScan("com.thinkweb.controller")
 @EnableWebMvc
 public class WebConfig extends WebMvcConfigurerAdapter {
     @Bean
