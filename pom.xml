@@ -11,6 +11,7 @@
 
     <modules>
         <module>th_db</module>
+        <module>th_web</module>
     </modules>
 
     <dependencyManagement>

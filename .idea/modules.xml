@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/ThinkWeb.iml" filepath="$PROJECT_DIR$/ThinkWeb.iml" />
       <module fileurl="file://$PROJECT_DIR$/th_db/th_db.iml" filepath="$PROJECT_DIR$/th_db/th_db.iml" />
+      <module fileurl="file://$PROJECT_DIR$/th_web/th_web.iml" filepath="$PROJECT_DIR$/th_web/th_web.iml" />
     </modules>
   </component>
 </project>

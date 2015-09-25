@@ -23,10 +23,12 @@
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
         <module name="th_db" />
+        <module name="th_web" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="th_db" target="1.5" />
+      <module name="th_web" target="1.5" />
       <module name="ThinkWeb" target="1.5" />
     </bytecodeTargetLevel>
   </component>
