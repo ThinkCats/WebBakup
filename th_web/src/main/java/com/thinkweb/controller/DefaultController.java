@@ -21,6 +21,6 @@ public class DefaultController {
     public String hello(HttpServletRequest request){
         System.out.println("hello");
         request.setAttribute("hello","hello world");
-        return "index";
+        return "main";
     }
 }

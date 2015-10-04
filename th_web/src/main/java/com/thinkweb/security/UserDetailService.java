@@ -26,6 +26,6 @@ public class UserDetailService implements UserDetailsService {
         if (user == null){
             throw new UsernameNotFoundException("User not found");
         }
-        return new User(userName,user.getPassword(),false,false,false,false,new ArrayList<GrantedAuthority>(0)) ;
+        return new User(userName,user.getPassword(),true,true,true,true,new ArrayList<GrantedAuthority>(0)) ;
     }
 }
