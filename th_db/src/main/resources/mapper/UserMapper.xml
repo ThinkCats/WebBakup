@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.thinkcat.presistence.UserMapper">
+
+    <resultMap id="BaseResultMap" type="com.thinkcat.domain.User">
+        <id column="uid" jdbcType="BIGINT" property="uId"/>
+        <result column="user_name" jdbcType="VARCHAR" property="userName"/>
+        <result column="password" jdbcType="VARCHAR" property="password"/>
+        <result column="user_type" jdbcType="INTEGER" property="userType"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        uid,user_name,password,user_type
+    </sql>
+    
+    <select id="findUserByName" resultType="com.thinkcat.domain.User" parameterType="string">
+        SELECT
+          <include refid="Base_Column_List"/>
+        FROM th_user
+        WHERE user_name = #{userName,jdbcType=VARCHAR}
+    </select>
+
+</mapper>

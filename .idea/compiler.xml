@@ -27,9 +27,9 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="1.8">
-      <module name="th_db" target="1.8" />
-      <module name="th_web" target="1.8" />
-      <module name="ThinkWeb" target="1.8" />
+      <module name="th_db" target="1.5" />
+      <module name="th_web" target="1.5" />
+      <module name="ThinkWeb" target="1.5" />
     </bytecodeTargetLevel>
   </component>
 </project>
