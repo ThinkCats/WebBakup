@@ -1,10 +1,10 @@
 package com.thinkcat.presistence;
 
-import com.thinkcat.domain.User;
+import com.thinkcat.domain.AdminUser;
 
 /**
  * Created by Think Cat on 15/10/4.
  */
 public interface UserMapper {
-    User findUserByName(String userName);
+    AdminUser findUserByName(String userName);
 }

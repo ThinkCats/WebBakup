@@ -1,5 +1,6 @@
 package com.thinkweb.security;
 
+import com.thinkcat.domain.AdminUser;
 import com.thinkcat.presistence.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
@@ -22,7 +23,7 @@ public class UserDetailService implements UserDetailsService {
     UserMapper userMapper;
 
     public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
-        com.thinkcat.domain.User user = userMapper.findUserByName(userName);
+        AdminUser user = userMapper.findUserByName(userName);
         if (user == null){
             System.out.println("Error");
             throw new UsernameNotFoundException("User not found");
