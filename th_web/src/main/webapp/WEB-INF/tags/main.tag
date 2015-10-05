@@ -70,9 +70,6 @@
                                     <a href="#">粉丝</a>
                                 </div>
                                 <div class="col-xs-4 text-center">
-                                    <a href="#">售出</a>
-                                </div>
-                                <div class="col-xs-4 text-center">
                                     <a href="#">朋友</a>
                                 </div>
                             </li>
@@ -82,7 +79,10 @@
                                     <a href="#" class="btn btn-default btn-flat">个人资料</a>
                                 </div>
                                 <div class="pull-right">
-                                    <a href="#" class="btn btn-default btn-flat">退出登录</a>
+                                    <form id="logout" action="/logout" method="post" >
+                                        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+                                    </form>
+                                    <a href="javascript:document.getElementById('logout').submit()" class="btn btn-default btn-flat">退出登录</a>
                                 </div>
                             </li>
                         </ul>
