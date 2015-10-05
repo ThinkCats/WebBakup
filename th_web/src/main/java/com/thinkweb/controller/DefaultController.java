@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 @RequestMapping("/")
 public class DefaultController {
 
-    @RequestMapping("")
+    @RequestMapping("/index")
     public String index(){
         return "index";
     }
