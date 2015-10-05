@@ -20,13 +20,13 @@ public class DataConfig {
     @Configuration
     public static class DataSourceConfig{
 
-        @Value("jdbc.url")
+        @Value("${jdbc.url}")
         String url;
-        @Value("jdbc.username")
+        @Value("${jdbc.username}")
         String username;
-        @Value("jdbc.password")
+        @Value("${jdbc.password}")
         String password;
-        @Value("jdbc.driver.name")
+        @Value("${jdbc.driver.name}")
         String driverName;
         @Value("${jdbc.initsize}")
         int initSize;

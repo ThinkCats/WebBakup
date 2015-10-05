@@ -24,6 +24,7 @@ public class UserDetailService implements UserDetailsService {
     public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
         com.thinkcat.domain.User user = userMapper.findUserByName(userName);
         if (user == null){
+            System.out.println("Error");
             throw new UsernameNotFoundException("User not found");
         }
         return new User(userName,user.getPassword(),true,true,true,true,new ArrayList<GrantedAuthority>(0)) ;
