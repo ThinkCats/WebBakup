@@ -1,4 +1,4 @@
-## README
+## ThinkWeb
 This is a demo web based on java spring4 and mybatis
 <br>
 ### Note That
