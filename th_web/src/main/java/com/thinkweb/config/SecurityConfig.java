@@ -8,6 +8,8 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.web.csrf.CsrfTokenRepository;
+import org.springframework.security.web.csrf.HttpSessionCsrfTokenRepository;
 
 /**
  * Created by Think Cat on 15/10/4.
@@ -40,8 +42,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/login").permitAll()
                 .anyRequest().authenticated()
                 .and()
-                .formLogin().loginPage("/login").defaultSuccessUrl("/");
+                .formLogin().loginPage("/login").defaultSuccessUrl("/")
+                .and()
+                .csrf()
+                .csrfTokenRepository(csrfTokenRepository());
     }
 
+    private CsrfTokenRepository csrfTokenRepository(){
+        HttpSessionCsrfTokenRepository repository = new HttpSessionCsrfTokenRepository();
+        repository.setSessionAttributeName("_csrf");
+        return repository;
+    }
 
 }
