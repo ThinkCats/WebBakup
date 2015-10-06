@@ -34,11 +34,11 @@
     <p class="login-box-msg"> 让体验与众不同 </p>
     <form action="login" method="post">
       <div class="form-group has-feedback">
-        <input type="text" class="form-control" name="username" placeholder="User">
+        <input type="text" id="th_username" class="form-control" name="username" placeholder="User">
         <span class="glyphicon glyphicon-user form-control-feedback"></span>
       </div>
       <div class="form-group has-feedback">
-        <input type="password" class="form-control" name="password" placeholder="Password">
+        <input type="password" id="th_password" class="form-control" name="password" placeholder="Password">
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
       </div>
@@ -46,12 +46,12 @@
         <div class="col-xs-8">
           <div class="checkbox icheck">
             <label>
-              <input type="checkbox"> 记住我的账号
+              <input id="rmbUser" type="checkbox"> 记住我的账号
             </label>
           </div>
         </div><!-- /.col -->
         <div class="col-xs-4">
-          <button type="submit" class="btn btn-primary btn-block btn-flat">登录</button>
+          <button type="submit" onclick="saveUserInfo()" class="btn btn-primary btn-block btn-flat">登录</button>
         </div><!-- /.col -->
       </div>
     </form>
@@ -64,6 +64,8 @@
 
 <!-- jQuery 2.1.4 -->
 <script src="/resources/plugins/jQuery/jQuery-2.1.4.min.js"></script>
+<!-- jquery cookie -->
+<script src="/resources/plugins/jQuery/jquery.cookie.js"></script>
 <!-- Bootstrap 3.3.5 -->
 <script src="/resources/bootstrap/js/bootstrap.min.js"></script>
 <!-- iCheck -->
@@ -76,6 +78,31 @@
       increaseArea: '20%' // optional
     });
   });
+
+  //remember account
+  $(document).ready(function(){
+    if ($.cookie("rmbUser") == "true") {
+      $("#rmbUser").attr("checked", true);
+      $("#th-username").val($.cookie("userName"));
+      $("#th-password").val($.cookie("passWord"));
+    }
+  });
+
+  function saveUserInfo() {
+    if ($("#rmbUser").is(':checked')) {
+      var userName = $("#th-username").val();
+      var passWord = $("#th-password").val();
+      $.cookie("rmbUser", "true", { expires: 7 }); // 存储一个带7天期限的 cookie
+      $.cookie("userName", userName, { expires: 7 }); // 存储一个带7天期限的 cookie
+      $.cookie("passWord", passWord, { expires: 7 }); // 存储一个带7天期限的 cookie
+    }
+    else {
+      $.cookie("rmbUser", "false", { expires: -1 });        // 删除 cookie
+      $.cookie("userName", '', { expires: -1 });
+      $.cookie("passWord", '', { expires: -1 });
+    }
+  }
+
 </script>
 </body>
 </html>
