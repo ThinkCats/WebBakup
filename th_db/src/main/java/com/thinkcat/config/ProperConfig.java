@@ -12,7 +12,7 @@ import org.springframework.core.env.Environment;
  */
 
 @Configuration
-@PropertySource("classpath:mysql-config.properties")
+@PropertySource("classpath:${env}-config.properties")
 public class ProperConfig implements EnvironmentAware {
 
     private Environment environment;
