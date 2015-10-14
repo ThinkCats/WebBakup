@@ -10,3 +10,15 @@ CREATE TABLE `thinkweb`.`th_user` (
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8
 COLLATE = utf8_general_ci;
+
+CREATE TABLE `thinkweb`.`th_role` (
+  `rold_id` BIGINT(20) NOT NULL COMMENT '',
+  `role_name` VARCHAR(45) NULL COMMENT '',
+  `description` VARCHAR(100) NULL COMMENT '',
+  PRIMARY KEY (`rold_id`)  COMMENT '');
+
+CREATE TABLE `thinkweb`.`th_auth` (
+  `auth_id` BIGINT(20) NOT NULL COMMENT '',
+  `name` VARCHAR(45) NULL COMMENT '',
+  `url` VARCHAR(45) NULL COMMENT '',
+  PRIMARY KEY (`auth_id`)  COMMENT '');
