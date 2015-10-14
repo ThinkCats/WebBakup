@@ -38,7 +38,24 @@
                             <div class="row">
                                 <div class="col-xs-12">
                                     <div class="box">
-                                        <!-- /.box-header -->
+                                        <div class="box-header">
+                                                <span>共 1 条记录  当前是第 1  页 </span>
+                                                <ul class="pagination pagination-sm no-margin pull-left">
+                                                    <li><a href="#">&laquo;</a></li>
+                                                    <li><a href="#">1</a></li>
+                                                    <li><a href="#">2</a></li>
+                                                    <li><a href="#">3</a></li>
+                                                    <li><a href="#">&raquo;</a></li>
+                                                </ul>
+                                            <div class="box-tools">
+                                                <div class="input-group" style="width: 150px;">
+                                                    <input type="text" name="table_search" class="form-control input-sm pull-right" placeholder="Search">
+                                                    <div class="input-group-btn">
+                                                        <button class="btn btn-sm btn-default"><i class="fa fa-search"></i></button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div><!-- /.box-header -->
                                         <div class="box-body table-responsive no-padding">
                                             <table class="table table-hover">
                                                 <tr>
