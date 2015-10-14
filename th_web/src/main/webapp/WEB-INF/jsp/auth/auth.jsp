@@ -39,23 +39,22 @@
                                 <div class="col-xs-12">
                                     <div class="box">
                                         <div class="box-header">
-                                                <span>共 1 条记录  当前是第 1  页 </span>
-                                                <ul class="pagination pagination-sm no-margin pull-left">
-                                                    <li><a href="#">&laquo;</a></li>
-                                                    <li><a href="#">1</a></li>
-                                                    <li><a href="#">2</a></li>
-                                                    <li><a href="#">3</a></li>
-                                                    <li><a href="#">&raquo;</a></li>
-                                                </ul>
+                                            <code>共 1 条记录 当前是第 1 页</code>
+
                                             <div class="box-tools">
                                                 <div class="input-group" style="width: 150px;">
-                                                    <input type="text" name="table_search" class="form-control input-sm pull-right" placeholder="Search">
+                                                    <input type="text" name="table_search"
+                                                           class="form-control input-sm pull-right"
+                                                           placeholder="查找用户">
+
                                                     <div class="input-group-btn">
-                                                        <button class="btn btn-sm btn-default"><i class="fa fa-search"></i></button>
+                                                        <button class="btn btn-sm btn-default"><i
+                                                                class="fa fa-search"></i></button>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div><!-- /.box-header -->
+                                        </div>
+                                        <!-- /.box-header -->
                                         <div class="box-body table-responsive no-padding">
                                             <table class="table table-hover">
                                                 <tr>
@@ -80,6 +79,15 @@
                                             </table>
                                         </div>
                                         <!-- /.box-body -->
+                                        <div class="box-footer clearfix">
+                                                <ul class="pagination pagination-sm no-margin pull-right">
+                                                <li class="disabled"><a href="#">&laquo;</a></li>
+                                                <li class="active"><a href="#">1</a></li>
+                                                <li><a href="#">2</a></li>
+                                                <li><a href="#">3</a></li>
+                                                <li><a href="#">&raquo;</a></li>
+                                                </ul>
+                                        </div>
                                     </div>
                                     <!-- /.box -->
                                 </div>
@@ -88,13 +96,13 @@
                         </div>
                         <!-- /.tab-pane -->
                         <div class="tab-pane" id="tab_2">
-                            <%--TODO--%>
+                                <%--TODO--%>
                             角色信息
                         </div>
                         <!-- /.tab-pane -->
                         <div class="tab-pane" id="tab_3">
-                            <%--TODO--%>
-                           权限信息
+                                <%--TODO--%>
+                            权限信息
                         </div>
                         <!-- /.tab-pane -->
                     </div>
