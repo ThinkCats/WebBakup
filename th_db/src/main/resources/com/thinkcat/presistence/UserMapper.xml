@@ -19,5 +19,41 @@
         FROM th_user
         WHERE user_name = #{userName,jdbcType=VARCHAR}
     </select>
-
+    <insert id="insertUser" useGeneratedKeys="true" keyProperty="uId" parameterType="com.thinkcat.domain.AdminUser">
+        INSERT INTO  th_user
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+        <if test="userName !=null">
+            user_name,
+        </if>
+        <if test="password !=null">
+            password,
+        </if>
+        <if test="userType !=null">
+            user_type,
+        </if>
+        <if test="roleId !=null">
+            role_id,
+        </if>
+        <if test="description !=null">
+            description,
+        </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+        <if test="userName !=null">
+           #{userName},
+        </if>
+        <if test="password !=null">
+            #{password},
+        </if>
+        <if test="userType !=null">
+            #{userType},
+        </if>
+        <if test="roleId !=null">
+            #{roleId},
+        </if>
+        <if test="description !=null">
+            #{description},
+        </if>
+      </trim>
+    </insert>
 </mapper>

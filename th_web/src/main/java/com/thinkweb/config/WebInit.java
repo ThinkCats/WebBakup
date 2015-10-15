@@ -2,6 +2,7 @@ package com.thinkweb.config;
 
 import com.thinkcat.config.DataConfig;
 import com.thinkcat.config.ProperConfig;
+import com.thinkcat.config.ServiceConfig;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 /**
@@ -13,15 +14,15 @@ public class WebInit extends AbstractAnnotationConfigDispatcherServletInitialize
     protected Class<?>[] getRootConfigClasses() {
         return new Class<?>[]{
                 SecurityConfig.class,
-                WebConfig.class,
                 ProperConfig.class,
-                DataConfig.class
+                DataConfig.class,
+                ServiceConfig.class
         };
     }
 
     @Override
     protected Class<?>[] getServletConfigClasses() {
-        return new Class<?>[0];
+        return new Class<?>[]{WebConfig.class};
     }
 
     @Override

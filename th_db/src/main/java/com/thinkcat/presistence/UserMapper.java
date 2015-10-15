@@ -7,4 +7,5 @@ import com.thinkcat.domain.AdminUser;
  */
 public interface UserMapper {
     AdminUser findUserByName(String userName);
+    int insertUser(AdminUser user);
 }
