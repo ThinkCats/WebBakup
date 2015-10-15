@@ -134,9 +134,4 @@
         </div>
     </section>
 
-    <!-- Main content -->
-    <section class="content">
-
-    </section>
-
 </t:main>
