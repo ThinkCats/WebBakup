@@ -62,7 +62,8 @@
 
                                             <%-- table area --%>
                                     <div class="box-header">
-                                        <code>共 1 条记录 当前是第 1 页</code>
+                                        <code id="pageStatus">共 1 条记录 当前是第 1 页 </code>
+
                                         <div class="box-tools">
                                             <div class="input-group" style="width: 150px;">
                                                 <input type="text" name="table_search"
@@ -101,6 +102,7 @@
                                     </div>
                                     <!-- /.box-body -->
                                     <div class="box-footer clearfix">
+                                        <code>每页显示 <span id="pageLimit">10</span>  条</code>
                                         <ul class="pagination pagination-sm no-margin pull-right">
                                             <li class="disabled"><a href="#">&laquo;</a></li>
                                             <li class="active"><a href="#">1</a></li>

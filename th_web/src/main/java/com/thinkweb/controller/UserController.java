@@ -1,5 +1,6 @@
 package com.thinkweb.controller;
 
+import com.thinkcat.common.Pager;
 import com.thinkcat.domain.AdminUser;
 import com.thinkcat.service.UserService;
 import lombok.extern.slf4j.Slf4j;
@@ -18,6 +19,13 @@ public class UserController {
 
     @Autowired
     UserService userService;
+
+    @RequestMapping(value = "",method = RequestMethod.GET)
+    public String userIndex(){
+        //default page limit 10 ,pageNum 1
+
+        return "auth/user";
+    }
 
     @RequestMapping(value = "/addUser",method = RequestMethod.GET)
     public String addUserIndex(){

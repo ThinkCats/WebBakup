@@ -12,13 +12,20 @@
     <sql id="Base_Column_List">
         uid,user_name,password,user_type
     </sql>
-    
+
+    <select id="findUserPager" resultMap="BaseResultMap">
+        SELECT <include refid="Base_Column_List"/>
+        FROM th_user
+        LIMIT #{offset,jdbcType=INTEGER} , #{length,jdbcType=INTEGER}
+    </select>
+
     <select id="findUserByName" resultType="com.thinkcat.domain.AdminUser" parameterType="string">
         SELECT
           <include refid="Base_Column_List"/>
         FROM th_user
         WHERE user_name = #{userName,jdbcType=VARCHAR}
     </select>
+
     <insert id="insertUser" useGeneratedKeys="true" keyProperty="uId" parameterType="com.thinkcat.domain.AdminUser">
         INSERT INTO  th_user
         <trim prefix="(" suffix=")" suffixOverrides="," >

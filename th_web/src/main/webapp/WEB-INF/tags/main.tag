@@ -124,7 +124,7 @@
                     </a>
                 </li>
                 <li class="treeview">
-                    <a href="/auth">
+                    <a href="/user">
                         <i class="fa fa-edit"></i> <span>用户权限</span> </i>
                     </a>
                 </li>
