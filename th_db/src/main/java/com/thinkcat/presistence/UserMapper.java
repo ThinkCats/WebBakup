@@ -9,7 +9,12 @@ import java.util.List;
  * Created by Think Cat on 15/10/4.
  */
 public interface UserMapper {
+
     AdminUser findUserByName(String userName);
-    List<AdminUser> findUserPager(@Param("offset")Integer offset,@Param("length")Integer length);
+
+    List<AdminUser> findUserPager(AdminUser user);
+
+    long findUserCount(AdminUser user);
+
     int insertUser(AdminUser user);
 }
