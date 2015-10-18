@@ -159,11 +159,11 @@ public class Pager<T> {
         return isLastPage;
     }
 
-    public boolean hasPreviousPage() {
+    public boolean isHasPreviousPage() {
         return hasPreviousPage;
     }
 
-    public boolean hasNextPage() {
+    public boolean isHasNextPage() {
         return hasNextPage;
     }
 

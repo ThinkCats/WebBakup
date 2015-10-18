@@ -43,7 +43,7 @@ public class UserController {
     @RequestMapping(value = "/addUser",method = RequestMethod.POST)
     public String addUser(AdminUser user){
         int count = userService.insertUser(user);
-        return "auth/auth";
+        return "auth/user";
     }
 
 }
