@@ -1,4 +1,4 @@
-package com.thinkcat.common;
+package com.thinkcat.dto;
 
 import java.util.List;
 

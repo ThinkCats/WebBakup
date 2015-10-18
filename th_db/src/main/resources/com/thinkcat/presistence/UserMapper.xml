@@ -13,10 +13,40 @@
         uid,user_name,password,user_type
     </sql>
 
-    <select id="findUserPager" resultMap="BaseResultMap">
+    <sql id="Base_Where_Condition">
+        <if test="uId !=null and uId !='' ">
+            AND uid = #{uId,jdbcType=BIGINT}
+        </if>
+        <if test="userName !=null and userName != '' ">
+            AND user_name = #{userName,jdbcType=VARCHAR}
+        </if>
+        <if test="password != null and password != '' ">
+            AND password = #{password,jdbcType=VARCHAR}
+        </if>
+        <if test="userType !=null and userType != '' ">
+            AND user_type = #{userType,jdbcType=INTEGER}
+        </if>
+        <if test="roleId != null and roleId != '' ">
+            AND role_id = #{roleId,jdbcType=BIGINT}
+        </if>
+        <if test="description != null and description != '' ">
+            AND description = #{description,jdbcType=VARCHAR}
+        </if>
+
+    </sql>
+
+    <select id="findUserPager" resultMap="BaseResultMap" parameterType="com.thinkcat.domain.AdminUser">
         SELECT <include refid="Base_Column_List"/>
-        FROM th_user
-        LIMIT #{offset,jdbcType=INTEGER} , #{length,jdbcType=INTEGER}
+        FROM th_user WHERE 1=1
+        <include refid="Base_Where_Condition"/>
+        <if test="pageLength != null and offset != null">
+            LIMIT #{offset,jdbcType=INTEGER} , #{pageLength,jdbcType=INTEGER}
+        </if>
+    </select>
+
+    <select id="findUserCount" resultType="long" parameterType="com.thinkcat.domain.AdminUser">
+        SELECT count(1) FROM th_user WHERE 1=1
+        <include refid="Base_Where_Condition"/>
     </select>
 
     <select id="findUserByName" resultType="com.thinkcat.domain.AdminUser" parameterType="string">

@@ -1,4 +1,5 @@
 <%@tag pageEncoding="UTF-8" %>
+<%@attribute name="refers" fragment="true" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -360,5 +361,8 @@
 <script src="/resources/thweb/dist/js/app.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="/resources/thweb/dist/js/demo.js"></script>
+
+<jsp:invoke fragment="refers"/>
+
 </body>
 </html>

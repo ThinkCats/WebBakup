@@ -1,6 +1,6 @@
 package com.thinkweb.controller;
 
-import com.thinkcat.common.Pager;
+import com.thinkcat.dto.Pager;
 import com.thinkcat.domain.AdminUser;
 import com.thinkcat.service.UserService;
 import lombok.extern.slf4j.Slf4j;
@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  * Created by  Think Cat on 2015/10/15.
@@ -22,9 +24,15 @@ public class UserController {
 
     @RequestMapping(value = "",method = RequestMethod.GET)
     public String userIndex(){
-        //default page limit 10 ,pageNum 1
-
         return "auth/user";
+    }
+
+    @RequestMapping(value = "/page",method = RequestMethod.POST)
+    @ResponseBody
+    public Pager<AdminUser> getUserPage(@RequestParam(name = "pageNum",defaultValue = "1")int pageNum,
+                              @RequestParam(name = "pageLength",defaultValue = "10")int length){
+        Pager<AdminUser> userPager = userService.findUserPager(pageNum,length);
+        return userPager;
     }
 
     @RequestMapping(value = "/addUser",method = RequestMethod.GET)
