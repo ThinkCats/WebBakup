@@ -10,6 +10,16 @@
 
 <t:main>
 
+    <jsp:attribute name="refers">
+        <script type="text/javascript" src="/resources/assert/js/auth/user.js"></script>
+        <script type="text/javascript">
+             $(document).ready(function(){
+                 loadUser("${_csrf.parameterName}","${_csrf.token}",1,10);
+             });
+         </script>
+    </jsp:attribute>
+
+    <jsp:body>
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
@@ -36,9 +46,9 @@
                         <div class="tab-pane active" id="tab_1">
                             <div class="row">
                                 <div class="col-xs-12">
-                                    <%-- operate area --%>
-                                    <div class="form-group">
-                                        <div class="btn-group">
+                                        <%-- operate area --%>
+                                    <div class="form-group" style="width: 100%">
+                                        <div class="btn-group" style="float: left">
                                             <button type="button" class="btn btn-default">操作</button>
                                             <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                                                 <span class="caret"></span>
@@ -51,15 +61,17 @@
                                                 <li><a href="#">其他操作</a></li>
                                             </ul>
                                         </div>
-                                        <%--<div class="input-group"  style="width: 150px;">
+                                        <div class="input-group"  style="width: 300px; float: left">
                                             <div class="input-group-addon">
                                                 <i class="fa fa-calendar"></i>
                                             </div>
-                                            <input type="text" class="form-control pull-right active" id="reservation">
-                                        </div>--%>
+                                            <input type="text" width="40px" class="form-control active" id="reservation">
+                                        </div>
                                     </div>
+                                </div>
 
 
+                                <div class="col-xs-12">
                                             <%-- table area --%>
                                     <div class="box-header">
                                         <code id="pageStatus">共 1 条记录 当前是第 1 页 </code>
@@ -135,5 +147,7 @@
             <!-- /.col -->
         </div>
     </section>
+
+    </jsp:body>
 
 </t:main>
