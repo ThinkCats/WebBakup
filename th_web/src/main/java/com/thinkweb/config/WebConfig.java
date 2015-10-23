@@ -8,9 +8,11 @@ import org.springframework.web.servlet.config.annotation.*;
 import org.springframework.web.servlet.view.JstlView;
 import org.springframework.web.servlet.view.UrlBasedViewResolver;
 import org.thymeleaf.spring4.SpringTemplateEngine;
+import org.thymeleaf.spring4.dialect.SpringStandardDialect;
 import org.thymeleaf.spring4.view.ThymeleafViewResolver;
 import org.thymeleaf.templateresolver.ServletContextTemplateResolver;
 import org.thymeleaf.templateresolver.TemplateResolver;
+import org.thymeleaf.templateresolver.UrlTemplateResolver;
 
 /**
  * Created by juepei on 2015/9/25.
@@ -43,9 +45,15 @@ public class WebConfig extends WebMvcConfigurerAdapter {
     }
 
     @Bean
+    public UrlTemplateResolver urlTemplateResolver(){
+        return new UrlTemplateResolver();
+    }
+
+    @Bean
     public SpringTemplateEngine templateEngine(){
         SpringTemplateEngine templateEngine = new SpringTemplateEngine();
-        templateEngine.setTemplateResolver(templateResolver());
+        templateEngine.addTemplateResolver(templateResolver());
+        templateEngine.addTemplateResolver(urlTemplateResolver());
         return templateEngine;
     }
 
