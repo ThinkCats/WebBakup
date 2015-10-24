@@ -17,4 +17,8 @@ public interface UserMapper {
     long findUserCount(AdminUser user);
 
     int insertUser(AdminUser user);
+
+    List<AdminUser> findUserByParentId(@Param("parentId")Long parentId);
+
+    void addUserXref(@Param("parentId") Long parentId,@Param("uId") Long userId);
 }
