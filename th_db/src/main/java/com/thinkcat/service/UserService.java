@@ -33,4 +33,8 @@ public class UserService {
         }
         return userMapper.insertUser(user);
     }
+
+    public List<AdminUser> findAllUser(){
+        return userMapper.findAllUser();
+    }
 }

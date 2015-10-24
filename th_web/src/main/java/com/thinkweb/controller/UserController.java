@@ -11,6 +11,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpServletRequest;
+import java.util.List;
+
 /**
  * Created by  Think Cat on 2015/10/15.
  */
@@ -36,14 +39,17 @@ public class UserController {
     }
 
     @RequestMapping(value = "/addUser",method = RequestMethod.GET)
-    public String addUserIndex(){
+    public String addUserIndex(HttpServletRequest request){
+        List<AdminUser> users = userService.findAllUser();
+        request.setAttribute("userList",users);
         return "auth/addUser";
     }
 
     @RequestMapping(value = "/addUser",method = RequestMethod.POST)
     public String addUser(AdminUser user){
-        int count = userService.insertUser(user);
+        userService.insertUser(user);
         return "auth/user";
     }
+
 
 }

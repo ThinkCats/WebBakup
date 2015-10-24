@@ -10,6 +10,8 @@ import java.util.List;
  */
 public interface UserMapper {
 
+    List<AdminUser> findAllUser();
+
     AdminUser findUserByName(String userName);
 
     List<AdminUser> findUserPager(AdminUser user);
