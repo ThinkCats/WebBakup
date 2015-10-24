@@ -1,4 +1,5 @@
 #set($layout = "layout/main.vm")
 #define($content)
     Welcome to admin site !!
+    #myhref("hello world")
 #end

@@ -1,0 +1,154 @@
+#macro(pagination $url $paraName $paraData $headList )
+<div class="col-xs-12">
+    <div class="box-header">
+        <code id="pageStatus">
+            共 <span id="totalNum"></span> 条记录 当前是第 <span id="pageNum"></span> 页
+        </code>
+
+        <div class="box-tools">
+            <div class="input-group" style="width: 150px;">
+                <input type="text" name="table_search"
+                       class="form-control input-sm pull-right"
+                       placeholder="查找...">
+
+                <div class="input-group-btn">
+                    <button class="btn btn-sm btn-default"><i
+                            class="fa fa-search"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.box-header -->
+    <div class="box-body table-responsive no-padding">
+    ##                                    <%-- Loading --%>
+        <div id="loading" class="progress progress-sm active" style="width: 30%;margin-left: auto;margin-right: auto">
+            <div class="progress-bar progress-bar-success progress-bar-striped"
+                 style="width: 100%;"
+                 role="progressbar" aria-valuenow="100" aria-valuemin="0"
+                 aria-valuemax="100">
+                <span class="sr-only">80%.</span>
+            </div>
+        </div>
+
+        <table id="table" class="table table-hover">
+            <thead>
+            <tr>
+                #foreach($field in $headList)
+                    <th>$field</th>
+                #end
+            </tr>
+            </thead>
+            <tbody id="tbody">
+            </tbody>
+
+        </table>
+    </div>
+    <!-- /.box-body -->
+    <div class="box-footer clearfix">
+        <code>每页显示 <span id="pageLimit"></span> 条</code>
+        <ul id="pagina" class="pagination pagination-sm no-margin pull-right">
+        </ul>
+    </div>
+    <!-- /.box -->
+</div>
+
+<script type="text/javascript" charset="utf-8">
+    //Load data when document ready
+    $(document).ready(function () {
+        loadData("$paraName", "$paraData", 1, 10);
+    });
+
+    function loadData(paraName, paraData, pageNum, pageLength) {
+        if (!pageNum) {
+            pageNum = 1;
+        }
+        if (!pageLength) {
+            pageLength = 10;
+        }
+        var json = {};
+        json[paraName] = paraData;
+        json["pageNum"] = pageNum;
+        json["pageLength"] = pageLength;
+        $.ajax({
+            url: "$url",
+            data: json,
+            type: "post",
+            dataType: "json",
+            /*beforeSend:function(){
+                $('#loading').show();
+            },*/
+            success: function (data) {
+                console.log('user page:', data);
+                setPageData(data, paraName, paraData);
+                $('#loading').hide();
+            },
+            error: function (data) {
+                console.log('error :', data);
+                $('#loading').hide();
+            }
+        });
+    }
+
+    function setPageData(data, paraName, paraData) {
+        $('#totalNum').html(data.total);
+        $('#pageNum').html(data.pageNumber);
+        $('#pageLimit').html(data.limit);
+        setTableBody(data.list);
+        setPage(data, paraName, paraData);
+    }
+
+    function setTableBody(data) {
+        var body = '';
+        var i = 0;
+        for (var o in data) {
+            ++i;
+            var field = data[o];
+            body += '<tr>';
+            body += '<td>' + i + '</td>';
+            body += '<td>' + field.userName + '</td>';
+            body += '<td>' + field.userType + '</td>';
+            body += '<td>' + field.password + '</td>';
+            body += '<td>' +
+                    '<a class="label label-success">编辑</a> ' +
+                    '<a class="label label-danger">删除</a> ' +
+                    '</td>';
+            body += '</tr>';
+        }
+        if (body) {
+            $('#tbody').html(body);
+        } else {
+            $('#tbody').html('No data');
+        }
+    }
+
+    function setPage(data, paraName, paraData) {
+        //ul
+        var item = $('#pagina');
+        item.find('li').remove();
+
+        //previous
+        var enablePre = data.hasPreviousPage ? '' : 'disabled';
+        item.append('<li class=' + enablePre + '><a href="javascript:void(0)" onclick="goPreOrNext(\'' + paraName + '\',\'' + paraData + '\',-1)" >&laquo;</a></li>');
+
+        //page numbers
+        var pageNo = data.navigatePageNumbers;
+        for (var num in pageNo) {
+            if (pageNo[num] == data.pageNumber) {
+                item.append('<li class="active"><a href="#">' + pageNo[num] + '</a></li>');
+            } else {
+                item.append('<li><a href="javascript:void(0)" onclick="loadData(\'' + paraName + '\',\'' + paraData + '\',' + pageNo[num] + ',10)" >'
+                        + pageNo[num] + '</a></li>');
+            }
+        }
+
+        //next
+        var enableNext = data.hasNextPage ? '' : 'disabled';
+        item.append('<li class=' + enableNext + '><a href="javascript:void(0)" onclick="goPreOrNext(\'' + paraName + '\',\'' + paraData + '\',1)">&raquo;</a></li>');
+    }
+
+    function goPreOrNext(paraName, paraData, flag) {
+        var nowPage = $('#pagina .active').text();
+        loadData(paraName, paraData, parseInt(nowPage) + parseInt(flag), 10);
+    }
+</script>
+#end

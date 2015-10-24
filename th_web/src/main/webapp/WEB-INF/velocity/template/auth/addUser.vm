@@ -42,9 +42,6 @@
                                         #foreach($user in $userList)
                                             <option value="$user.uId">$user.userName</option>
                                         #end
-                                        #*<option value="3" selected="selected">Alabama</option>
-                                        <option value="1">Alaska</option>
-                                        <option value="2">California</option>*#
                                     </select>
                                 </div>
                             </div>

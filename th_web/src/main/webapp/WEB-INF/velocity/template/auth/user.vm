@@ -1,13 +1,9 @@
 #set($layout = "layout/main.vm")
 #define($content)
+
+
 <!-- Content Header (Page header) -->
 <section class="content-header">
-    <script type="text/javascript" src="/resources/assert/js/auth/user.js"></script>
-    <script type="text/javascript">
-        $(document).ready(function () {
-            loadUser("${_csrf.parameterName}", "${_csrf.token}", 1, 10);
-        });
-    </script>
     <h1>
         权限管理
         <small>编辑您的权限信息</small>
@@ -32,7 +28,7 @@
                     <div class="tab-pane active" id="tab_1">
                         <div class="row">
                             <div class="col-xs-12">
-##                                <%-- operate area --%>
+                            ##                                <%-- operate area --%>
                                 <div class="form-group" style="width: 100%">
                                     <div class="btn-group" style="float: left">
                                         <button type="button" class="btn btn-default">操作</button>
@@ -59,85 +55,36 @@
                                 </div>
                             </div>
 
+                        ## ==============  Pagination Begin ============================
 
-                            <div class="col-xs-12">
-##                                <%-- table area --%>
+                            #set($tableHead =["#","用户名","用户类型","密码","操作"])
+                            #pagination("/user/page", ${_csrf.parameterName},${_csrf.token},$tableHead)
 
+                        ## ============== Pagination End ===============================
 
-                                <div class="box-header">
-                                    <code id="pageStatus">
-                                        共 <span id="totalNum"></span> 条记录 当前是第 <span id="pageNum"></span> 页
-                                    </code>
-
-                                    <div class="box-tools">
-                                        <div class="input-group" style="width: 150px;">
-                                            <input type="text" name="table_search"
-                                                   class="form-control input-sm pull-right"
-                                                   placeholder="查找用户">
-
-                                            <div class="input-group-btn">
-                                                <button class="btn btn-sm btn-default"><i
-                                                        class="fa fa-search"></i></button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- /.box-header -->
-                                <div class="box-body table-responsive no-padding">
-##                                    <%-- Loading --%>
-                                    <div id="loading"  class="progress progress-sm active" style="width: 30%;margin-left: auto;margin-right: auto">
-                                        <div class="progress-bar progress-bar-success progress-bar-striped"
-                                             style="width: 100%;"
-                                             role="progressbar" aria-valuenow="100" aria-valuemin="0"
-                                             aria-valuemax="100">
-                                            <span class="sr-only">80%.</span>
-                                        </div>
-                                    </div>
-
-                                    <table id="table" class="table table-hover">
-                                        <thead>
-                                        <tr>
-                                            <th>#</th>
-                                            <th>用户名</th>
-                                            <th>用户类型</th>
-                                            <th>密码</th>
-                                            <th>操作</th>
-                                        </tr>
-                                        </thead>
-
-                                        <tbody id="tbody">
-                                        </tbody>
-
-                                    </table>
-                                </div>
-                                <!-- /.box-body -->
-                                <div class="box-footer clearfix">
-                                    <code>每页显示 <span id="pageLimit"></span> 条</code>
-                                    <ul id="pagination" class="pagination pagination-sm no-margin pull-right">
-                                    </ul>
-                                </div>
-                                <!-- /.box -->
-                            </div>
                         </div>
+                        <!-- /.tab-pane -->
+                        <div class="tab-pane" id="tab_2">
+                        ##  <%--TODO--%>
+                            角色信息
+                        </div>
+                        <!-- /.tab-pane -->
 
+                        <div class="tab-pane" id="tab_3">
+                        ##  <%--TODO--%>
+                            权限信息
+                        </div>
+                        <!-- /.tab-pane -->
                     </div>
-                    <!-- /.tab-pane -->
-                    <div class="tab-pane" id="tab_2">
-##                        <%--TODO--%>
-                        角色信息
-                    </div>
-                    <!-- /.tab-pane -->
-                    <div class="tab-pane" id="tab_3">
-##                        <%--TODO--%>
-                        权限信息
-                    </div>
-                    <!-- /.tab-pane -->
+                    <!-- /.tab-content -->
                 </div>
-                <!-- /.tab-content -->
+                <!-- nav-tabs-custom -->
             </div>
-            <!-- nav-tabs-custom -->
+            <!-- /.col -->
         </div>
-        <!-- /.col -->
-    </div>
 </section>
+#end
+
+#define($refer)
+##<script type="text/javascript" src="/resources/assert/js/common/pagination.js"></script>
 #end
