@@ -44,31 +44,33 @@ public class WebConfig extends WebMvcConfigurerAdapter {
                 .setCachePeriod(31556926);
     }
 
-    @Override
-    public void configureViewResolvers(ViewResolverRegistry registry) {
-        VelocityLayoutViewResolver viewResolver = new VelocityLayoutViewResolver();
-        viewResolver.setCache(false);
-        viewResolver.setLayoutUrl("/layout/main.vm");
-        viewResolver.setPrefix("/template/");
-        viewResolver.setSuffix(".vm");
-        viewResolver.setExposeSpringMacroHelpers(true);
-        viewResolver.setContentType("text/html;charset=UTF-8");
-        viewResolver.setScreenContentKey("screen");
-        viewResolver.setRequestContextAttribute("context");
-        viewResolver.setExposeRequestAttributes(true);
-        viewResolver.setToolboxConfigLocation("/WEB-INF/velocity/toolbox.xml");
-        viewResolver.setDateToolAttribute("dateTool");
-        viewResolver.setViewClass(VelocityToolbox2View.class);
-        registry.viewResolver(viewResolver);
-    }
-
-    @Bean
-    public VelocityConfigurer velocityConfigurer() {
-        VelocityConfigurer config = new VelocityConfigurer();
-        DefaultResourceLoader resourceLoader = new DefaultResourceLoader();
-        config.setConfigLocation(resourceLoader.getResource("velocity.properties"));
-        return config;
-    }
+//    ====================== velocity config ============================
+//    @Override
+//    public void configureViewResolvers(ViewResolverRegistry registry) {
+//        VelocityLayoutViewResolver viewResolver = new VelocityLayoutViewResolver();
+//        viewResolver.setCache(false);
+//        viewResolver.setLayoutUrl("/layout/main.vm");
+//        viewResolver.setPrefix("/template/");
+//        viewResolver.setSuffix(".vm");
+//        viewResolver.setExposeSpringMacroHelpers(true);
+//        viewResolver.setContentType("text/html;charset=UTF-8");
+//        viewResolver.setScreenContentKey("screen");
+//        viewResolver.setRequestContextAttribute("context");
+//        viewResolver.setExposeRequestAttributes(true);
+//        viewResolver.setToolboxConfigLocation("/WEB-INF/velocity/toolbox.xml");
+//        viewResolver.setDateToolAttribute("dateTool");
+//        viewResolver.setViewClass(VelocityToolbox2View.class);
+//        registry.viewResolver(viewResolver);
+//    }
+//
+//    @Bean
+//    public VelocityConfigurer velocityConfigurer() {
+//        VelocityConfigurer config = new VelocityConfigurer();
+//        DefaultResourceLoader resourceLoader = new DefaultResourceLoader();
+//        config.setConfigLocation(resourceLoader.getResource("velocity.properties"));
+//        return config;
+//    }
+//    ==================== velocity config end =============================
 
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
@@ -76,37 +78,37 @@ public class WebConfig extends WebMvcConfigurerAdapter {
     }
 
 //    =========================  thymeleaf config =============
-//    @Bean
-//    public ViewResolver viewResolver(){
-//        ThymeleafViewResolver viewResolver = new ThymeleafViewResolver();
-//        viewResolver.setTemplateEngine(templateEngine());
-//        viewResolver.setOrder(1);
-//        viewResolver.setCharacterEncoding("UTF-8");
-//        return viewResolver;
-//    }
-//
-//    @Bean
-//    public UrlTemplateResolver urlTemplateResolver(){
-//        return new UrlTemplateResolver();
-//    }
-//
-//    @Bean
-//    public SpringTemplateEngine templateEngine(){
-//        SpringTemplateEngine templateEngine = new SpringTemplateEngine();
-//        templateEngine.addTemplateResolver(templateResolver());
-//        templateEngine.addTemplateResolver(urlTemplateResolver());
-//        return templateEngine;
-//    }
-//
-//    @Bean
-//    public TemplateResolver templateResolver(){
-//        ServletContextTemplateResolver templateResolver = new ServletContextTemplateResolver();
-//        templateResolver.setPrefix("/WEB-INF/template/");
-//        templateResolver.setSuffix(".html");
-//        templateResolver.setTemplateMode("HTML5");
-//        templateResolver.setCacheable(false);
-//        return templateResolver;
-//    }
+    @Bean
+    public ViewResolver viewResolver(){
+        ThymeleafViewResolver viewResolver = new ThymeleafViewResolver();
+        viewResolver.setTemplateEngine(templateEngine());
+        viewResolver.setOrder(1);
+        viewResolver.setCharacterEncoding("UTF-8");
+        return viewResolver;
+    }
+
+    @Bean
+    public UrlTemplateResolver urlTemplateResolver(){
+        return new UrlTemplateResolver();
+    }
+
+    @Bean
+    public SpringTemplateEngine templateEngine(){
+        SpringTemplateEngine templateEngine = new SpringTemplateEngine();
+        templateEngine.addTemplateResolver(templateResolver());
+        templateEngine.addTemplateResolver(urlTemplateResolver());
+        return templateEngine;
+    }
+
+    @Bean
+    public TemplateResolver templateResolver(){
+        ServletContextTemplateResolver templateResolver = new ServletContextTemplateResolver();
+        templateResolver.setPrefix("/WEB-INF/thymeleaf/");
+        templateResolver.setSuffix(".html");
+        templateResolver.setTemplateMode("HTML5");
+        templateResolver.setCacheable(false);
+        return templateResolver;
+    }
 //    ==================== thymeleaf end ===================
 
 

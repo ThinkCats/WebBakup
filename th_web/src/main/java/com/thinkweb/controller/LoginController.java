@@ -23,7 +23,7 @@ public class LoginController {
         if (Constant.BALNKUSER.equals(o.toString())){
             return "login";
         }
-        return "login";
+        return "index";
     }
 
     @RequestMapping(value = "/logout",method = RequestMethod.POST)
