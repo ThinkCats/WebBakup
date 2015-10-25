@@ -28,6 +28,13 @@ public class UserService {
 
     @Transactional
     public int insertUser(AdminUser user){
+        if (user.getUserType() == null){
+            user.setUserType(1);
+        }
         return userMapper.insertUser(user);
+    }
+
+    public List<AdminUser> findAllUser(){
+        return userMapper.findAllUser();
     }
 }

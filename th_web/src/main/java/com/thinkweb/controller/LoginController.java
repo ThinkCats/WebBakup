@@ -17,13 +17,13 @@ import javax.servlet.http.HttpSession;
 @Controller
 public class LoginController {
     @RequestMapping(value = "/login", method = RequestMethod.GET)
-    public String login(HttpSession session){
+    public String login(){
         //TODO java spring security user remeber me
         Object o = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         if (Constant.BALNKUSER.equals(o.toString())){
             return "login";
         }
-        return "index";
+        return "login";
     }
 
     @RequestMapping(value = "/logout",method = RequestMethod.POST)

@@ -35,6 +35,11 @@
 
     </sql>
 
+    <select id="findAllUser" resultMap="BaseResultMap">
+        SELECT <include refid="Base_Column_List"/>
+        FROM th_user
+    </select>
+
     <select id="findUserPager" resultMap="BaseResultMap" parameterType="com.thinkcat.domain.AdminUser">
         SELECT <include refid="Base_Column_List"/>
         FROM th_user WHERE 1=1
@@ -55,6 +60,19 @@
         FROM th_user
         WHERE user_name = #{userName,jdbcType=VARCHAR}
     </select>
+
+    <select id="findUserByParentId" parameterType="long" resultMap="BaseResultMap">
+        SELECT <include refid="Base_Column_List"/>
+        FROM th_user
+        WHERE user_id in (
+        SELECT sub_user_id FROM th_user_xref
+        WHERE user_id = #{parentId,jdbcType=BIGINT}
+        )
+    </select>
+
+    <insert id="addUserXref" parameterType="long">
+        insert INTO th_user_xref VALUES (#{uId,jdbcType=BIGINT},#{parentId,jdbcType=BIGINT});
+    </insert>
 
     <insert id="insertUser" useGeneratedKeys="true" keyProperty="uId" parameterType="com.thinkcat.domain.AdminUser">
         INSERT INTO  th_user

@@ -1,0 +1,3 @@
+#macro(myhref $name)
+    <a href="#">$name</a>
+#end

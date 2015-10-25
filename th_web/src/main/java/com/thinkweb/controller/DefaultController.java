@@ -17,6 +17,7 @@ public class DefaultController {
         return "index";
     }
 
+    //My test
     @RequestMapping("/hello")
     public String hello(HttpServletRequest request){
         System.out.println("hello");
