@@ -1,4 +1,4 @@
-#macro(pagination $url $paraName $paraData $headList )
+#macro(pagination $url $paraName $paraData $headMap )
 <div class="col-xs-12">
     <div class="box-header">
         <code id="pageStatus">
@@ -33,8 +33,8 @@
         <table id="table" class="table table-hover">
             <thead>
             <tr>
-                #foreach($field in $headList)
-                    <th>$field</th>
+                #foreach($head in $headMap.keySet())
+                    <th>$head</th>
                 #end
             </tr>
             </thead>
@@ -99,12 +99,9 @@
 
     function setTableBody(data) {
         var body = '';
-        var i = 0;
         for (var o in data) {
-            ++i;
             var field = data[o];
             body += '<tr>';
-            body += '<td>' + i + '</td>';
             body += '<td>' + field.userName + '</td>';
             body += '<td>' + field.userType + '</td>';
             body += '<td>' + field.password + '</td>';

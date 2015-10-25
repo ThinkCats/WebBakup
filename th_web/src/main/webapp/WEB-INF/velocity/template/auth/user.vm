@@ -57,7 +57,7 @@
 
                         ## ==============  Pagination Begin ============================
 
-                            #set($tableHead =["#","用户名","用户类型","密码","操作"])
+                            #set($tableHead ={"用户名":"userName","用户类型":"userType","密码":"password","操作":""})
                             #pagination("/user/page", ${_csrf.parameterName},${_csrf.token},$tableHead)
 
                         ## ============== Pagination End ===============================
