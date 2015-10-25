@@ -2,7 +2,7 @@
  * Created by juepei on 2015/10/16.
  */
 
-function loadUser(paraName,paraData,pageNum,pageLength){
+function loadData(paraName,paraData,pageNum,pageLength){
     if(!pageNum){
         pageNum = 1;
     }

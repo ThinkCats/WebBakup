@@ -10,6 +10,8 @@ import java.util.List;
  */
 public interface UserMapper {
 
+    List<AdminUser> findAllUser();
+
     AdminUser findUserByName(String userName);
 
     List<AdminUser> findUserPager(AdminUser user);
@@ -17,4 +19,8 @@ public interface UserMapper {
     long findUserCount(AdminUser user);
 
     int insertUser(AdminUser user);
+
+    List<AdminUser> findUserByParentId(@Param("parentId")Long parentId);
+
+    void addUserXref(@Param("parentId") Long parentId,@Param("uId") Long userId);
 }
