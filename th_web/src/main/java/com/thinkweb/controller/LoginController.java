@@ -26,7 +26,7 @@ public class LoginController {
         return "login";
     }
 
-    @RequestMapping(value = "/logout",method = RequestMethod.POST)
+    @RequestMapping(value = "/logoutT",method = RequestMethod.POST)
     public String logout(HttpSession session){
         session.invalidate();
         return "login";
