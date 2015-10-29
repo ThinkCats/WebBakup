@@ -1,8 +1,9 @@
-<nav th:fragment="nav">
-    <nav class="navbar navbar-inverse navbar-fixed-top">
+<nav th:fragment="nav" xmlns="http://www.w3.org/1999/html">
+    <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                        aria-expanded="false" aria-controls="navbar">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
@@ -10,18 +11,30 @@
                 </button>
                 <a class="navbar-brand" href="/">FastShip</a>
             </div>
+
             <div id="navbar" class="navbar-collapse collapse">
-                <form class="navbar-form navbar-right">
-                    <div class="form-group">
-                        <input type="text" placeholder="邮箱" class="form-control"/>
+                <div th:if="${session.auth}" >
+                    <div>
+                        <a class="navbar-text navbar-right" href="/logout">Logout</a>
+                        <a class="navbar-text navbar-right" th:text="${session.SPRING_SECURITY_CONTEXT.authentication.principal.username}"></a>
                     </div>
-                    <div class="form-group">
-                        <input type="password" placeholder="密码" class="form-control"/>
-                    </div>
-                    <button type="submit" class="btn btn-success">注册</button>
-                    <button type="submit" class="btn btn-primary">登录</button>
-                </form>
-            </div><!--/.navbar-collapse -->
+                </div>
+                <div th:if="${!session.auth}">
+
+                    <form action="/login" method="post" class="navbar-form navbar-right">
+                        <div class="form-group">
+                            <input type="text" name="username" placeholder="邮箱" class="form-control"/>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" name="password" placeholder="密码" class="form-control"/>
+                        </div>
+                        <button type="submit" class="btn btn-primary">登录</button>
+                        <button class="btn btn-success">注册</button>
+                    </form>
+
+                </div>
+            </div>
+            <!--/.navbar-collapse -->
         </div>
-    </nav>
+    </div>
 </nav>

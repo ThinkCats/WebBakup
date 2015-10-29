@@ -28,6 +28,8 @@ public class UserDetailService implements UserDetailsService {
             System.out.println("Error");
             throw new UsernameNotFoundException("User not found");
         }
-        return new User(userName,user.getPassword(),true,true,true,true,new ArrayList<GrantedAuthority>(0)) ;
+        CustomerUser userDetail = new CustomerUser(userName,user.getPassword(),true,true,true,true,new ArrayList<GrantedAuthority>(0));
+        userDetail.setUserId(user.getuId());
+        return userDetail ;
     }
 }

@@ -21,7 +21,7 @@ public class UserService {
         AdminUser userParam = new AdminUser(pageNum,pageLength);
         List<AdminUser> userList = userMapper.findUserPager(userParam);
         long count = userMapper.findUserCount(null);
-        Pager<AdminUser> userPager = new Pager<>((int)count,pageNum,pageLength);
+        Pager<AdminUser> userPager = new Pager<AdminUser>((int)count,pageNum,pageLength);
         userPager.setList(userList);
         return userPager;
     }

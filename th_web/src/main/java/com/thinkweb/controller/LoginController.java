@@ -19,14 +19,14 @@ public class LoginController {
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String login(){
         //TODO java spring security user remeber me
-        Object o = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        if (Constant.BALNKUSER.equals(o.toString())){
-            return "login";
-        }
-        return "index";
+//        Object o = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//        if (Constant.BALNKUSER.equals(o.toString())){
+//            return "login";
+//        }
+        return "login";
     }
 
-    @RequestMapping(value = "/logout",method = RequestMethod.POST)
+    @RequestMapping(value = "/logoutT",method = RequestMethod.POST)
     public String logout(HttpSession session){
         session.invalidate();
         return "login";

@@ -40,12 +40,19 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity auth) throws Exception {
         auth.authorizeRequests()
                 .antMatchers("/login").permitAll()
+                .antMatchers("/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin().loginPage("/login").defaultSuccessUrl("/")
                 .and()
-                .csrf()
-                .csrfTokenRepository(csrfTokenRepository());
+                .logout()
+                .invalidateHttpSession(true)
+                .logoutSuccessUrl("/")
+                .logoutUrl("/logout")
+                .permitAll()
+                .and()
+                .csrf().disable();
+
     }
 
     private CsrfTokenRepository csrfTokenRepository(){
