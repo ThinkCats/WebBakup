@@ -30,8 +30,8 @@ public class WebInit extends AbstractAnnotationConfigDispatcherServletInitialize
 
     @Override
     protected Filter[] getServletFilters() {
-        CustomerFilter filter = new CustomerFilter();
-        return new Filter[]{filter};
+       // CustomerFilter filter = new CustomerFilter();
+        return new Filter[]{};
     }
 
     @Override

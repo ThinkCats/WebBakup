@@ -7,4 +7,5 @@ target/*
 /target
 /*/target
 /classes
+classes/*
 
