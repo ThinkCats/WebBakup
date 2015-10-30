@@ -13,10 +13,11 @@
             </div>
 
             <div id="navbar" class="navbar-collapse collapse">
-                <div th:if="${session.auth}" >
+                <div th:if="${session.auth}">
                     <div>
                         <a class="navbar-text navbar-right" href="/logout">Logout</a>
-                        <a class="navbar-text navbar-right" th:text="${session.SPRING_SECURITY_CONTEXT.authentication.principal.username}"></a>
+                        <a class="navbar-text navbar-right"
+                           th:text="${session.SPRING_SECURITY_CONTEXT.authentication.principal.username}"></a>
                     </div>
                 </div>
                 <div th:if="${!session.auth}">
@@ -35,6 +36,21 @@
                 </div>
             </div>
             <!--/.navbar-collapse -->
+        </div>
+    </div>
+</nav>
+
+<nav th:fragment="nav-bar">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                    aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">FastShip</a>
         </div>
     </div>
 </nav>
