@@ -1,41 +1,110 @@
-#set($layout = "layout/blank.vm")
+#set($layout = "layout/main.vm")
+
+#define($refer)
+<!-- Bootstrap Core CSS - Uses Bootswatch Flatly Theme: http://bootswatch.com/flatly/ -->
+<link href="/resources/assert/css/bootstrap.min.css" rel="stylesheet">
+<!-- Custom CSS -->
+<link href="/resources/assert/css/freelancer.css" rel="stylesheet">
+<!-- Custom Fonts -->
+<link href="/resources/assert/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+<!-- jQuery -->
+<script src="/resources/assert/js/index/jquery.js"></script>
+
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/resources/assert/js/index/bootstrap.min.js"></script>
+
+<!-- Plugin JavaScript -->
+<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+<script src="/resources/assert/js/index/classie.js"></script>
+<script src="/resources/assert/js/index/cbpAnimatedHeader.js"></script>
+
+<!-- Contact Form JavaScript -->
+<script src="/resources/assert/js/index/jqBootstrapValidation.js"></script>
+<script src="/resources/assert/js/index/contact_me.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/resources/assert/js/index/freelancer.js"></script>
+
+#end
+
 #define($content)
 
-<div class="login-box">
-    <div class="login-logo">
-        <a href="/"><b>Think</b>CAT</a>
-    </div><!-- /.login-logo -->
-    <div class="login-box-body">
-        <p class="login-box-msg"> 让体验与众不同 </p>
-        <form action="login" method="post">
-            <div class="form-group has-feedback">
-                <input type="text" id="th-username" class="form-control" name="username" placeholder="User">
-                <span class="glyphicon glyphicon-user form-control-feedback"></span>
+<body id="page-top" class="index">
+
+
+<!-- Navigation -->
+<nav class="navbar navbar-default navbar-fixed-top navbar-shrink">
+    <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Fast Ship</a>
+        </div>
+
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container-fluid -->
+</nav>
+
+<br>
+
+<!-- Contact Section -->
+<section id="contact">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h2>登录</h2>
+                <hr style="width: 20%;">
             </div>
-            <div class="form-group has-feedback">
-                <input type="password" id="th-password" class="form-control" name="password" placeholder="Password">
-                <span class="glyphicon glyphicon-lock form-control-feedback"></span>
-                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-            </div>
-            <div class="row">
-                <div class="col-xs-8">
-                    <div>
-                        <label>
-                            <input id="rmbUser" type="checkbox"> 记住我的账号
-                        </label>
+        </div>
+        <div class="row">
+            <div class="col-md-4 col-lg-offset-4">
+                <!-- To configure the contact form email address, go to mail/contact_me.php and update the email address in the PHP file on line 19. -->
+                <!-- The form should work on most web servers, but if the form is not working you may need to configure your web server differently. -->
+                <form name="sentMessage" id="contactForm" novalidate>
+                    <div class="row control-group">
+                        <div class="form-group col-xs-12 floating-label-form-group controls">
+                            <label>邮箱</label>
+                            <input type="email" class="form-control" placeholder="邮箱" id="name" required
+                                   data-validation-required-message="请输入邮箱">
+
+                            <p class="help-block text-danger"></p>
+                        </div>
                     </div>
-                </div><!-- /.col -->
-                <div class="col-xs-4">
-                    <button type="submit" onclick="saveUserInfo()" class="btn btn-primary btn-block btn-flat">登录</button>
-                </div><!-- /.col -->
+                    <div class="row control-group">
+                        <div class="form-group col-xs-12 floating-label-form-group controls">
+                            <label>密码</label>
+                            <input type="password" class="form-control" name="password" placeholder="密码" id="password"
+                                   required data-validation-required-message="请输入密码">
+
+                            <p class="help-block text-danger"></p>
+                        </div>
+                    </div>
+                    <br>
+
+                    <div id="success" class="text-info text-right " >
+                        <a href="/"> 忘记密码?</a>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="form-group col-sm-10 col-sm-offset-1">
+                            <button type="submit" class="btn btn-success btn-block">登录</button>
+                        </div>
+                    </div>
+                </form>
             </div>
-        </form>
+        </div>
+    </div>
+</section>
+</body>
 
-        <a href="#">喔... 忘记密码了?</a><br>
-        <a href="register.html" class="text-center">注册一个新的账号</a>
-
-    </div><!-- /.login-box-body -->
-</div><!-- /.login-box -->
 
 <script>
     //  $(function () {
@@ -47,29 +116,33 @@
     //  });
 
     //remember account
-    $(document).ready(function(){
-        if ($.cookie("rmbUser") == "true") {
-            $("#rmbUser").attr("checked", true);
-            $("#th-username").val($.cookie("userName"));
-            $("#th-password").val($.cookie("passWord"));
-        }
-    });
-
-    function saveUserInfo() {
-        if ($("#rmbUser").is(':checked')) {
-            var userName = $("#th-username").val();
-            var passWord = $("#th-password").val();
-            $.cookie("rmbUser", "true", { expires: 7 }); // 存储一个带7天期限的 cookie
-            $.cookie("userName", userName, { expires: 7 }); // 存储一个带7天期限的 cookie
-            $.cookie("passWord", passWord, { expires: 7 }); // 存储一个带7天期限的 cookie
-        }
-        else {
-            $.cookie("rmbUser", "false", { expires: -1 });        // 删除 cookie
-            $.cookie("userName", '', { expires: -1 });
-            $.cookie("passWord", '', { expires: -1 });
-        }
-    }
+//    $(document).ready(function () {
+//        if ($.cookie("rmbUser") == "true") {
+//            $("#rmbUser").attr("checked", true);
+//            $("#th-username").val($.cookie("userName"));
+//            $("#th-password").val($.cookie("passWord"));
+//        }
+//    });
+//
+//    function saveUserInfo() {
+//        if ($("#rmbUser").is(':checked')) {
+//            var userName = $("#th-username").val();
+//            var passWord = $("#th-password").val();
+//            $.cookie("rmbUser", "true", {expires: 7}); // 存储一个带7天期限的 cookie
+//            $.cookie("userName", userName, {expires: 7}); // 存储一个带7天期限的 cookie
+//            $.cookie("passWord", passWord, {expires: 7}); // 存储一个带7天期限的 cookie
+//        }
+//        else {
+//            $.cookie("rmbUser", "false", {expires: -1});        // 删除 cookie
+//            $.cookie("userName", '', {expires: -1});
+//            $.cookie("passWord", '', {expires: -1});
+//        }
+//    }
 
 </script>
+
+#end
+
+#define($js)
 
 #end

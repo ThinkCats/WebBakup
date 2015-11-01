@@ -1,33 +1,14 @@
 #set($layout="layout/main.vm")
+#define($refer)
+<!-- Bootstrap Core CSS - Uses Bootswatch Flatly Theme: http://bootswatch.com/flatly/ -->
+<link href="/resources/assert/css/bootstrap.min.css" rel="stylesheet">
+<!-- Custom CSS -->
+<link href="/resources/assert/css/freelancer.css" rel="stylesheet">
+<!-- Custom Fonts -->
+<link href="/resources/assert/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+#end
+
 #define($content)
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <title>FastShip - 科学上网Vpn</title>
-
-    <!-- Bootstrap Core CSS - Uses Bootswatch Flatly Theme: http://bootswatch.com/flatly/ -->
-    <link href="/resources/assert/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom CSS -->
-    <link href="/resources/assert/css/freelancer.css" rel="stylesheet">
-
-    <!-- Custom Fonts -->
-    <link href="/resources/assert/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
-</head>
 
 <body id="page-top" class="index">
 
@@ -58,7 +39,7 @@
                     <a href="#about">关于</a>
                 </li>
                 <li class="page-scroll">
-                    <a href="#contact">登录</a>
+                    <a href="#contact">注册登录</a>
                 </li>
             </ul>
         </div>
@@ -75,8 +56,8 @@
                 <img class="img-responsive" src="/resources/assert/img/index/profile.png" alt="">
                 <div class="intro-text">
                     <span class="name">Fast Ship </span>
-                    <hr class="star-light">
-                    <span class="skills">快速访问 - 简易实用 - 适用于Windows MacOS Android/iOS</span>
+##                    <hr>
+                    <span class="skills">快速访问 - 简易实用 - 适用于Windows/Linux/MacOS/Android/iOS</span>
                 </div>
             </div>
         </div>
@@ -89,7 +70,7 @@
         <div class="row">
             <div class="col-lg-12 text-center">
                 <h2>使用教程</h2>
-                <hr class="star-primary">
+                <hr>
             </div>
         </div>
         <div class="row">
@@ -163,7 +144,7 @@
         <div class="row">
             <div class="col-lg-12 text-center">
                 <h2>关于</h2>
-                <hr class="star-light">
+                <hr style="width: 10%">
             </div>
         </div>
         <div class="row">
@@ -174,8 +155,8 @@
                 <p>完美支持多系统，Windows、iPhone、Ipad、Android、Surface Pro、Xbox360、PS3Ubuntu、Symbian 支持Iphone6、Windows8等最新操作系统 。</p>
             </div>
             <div class="col-lg-8 col-lg-offset-2 text-center">
-                <a href="#" class="btn btn-lg btn-outline">
-                    <i class="fa fa-download"></i>开始试用
+                <a href="#contact" class="btn btn-lg btn-outline">
+                    <i class="fa fa-user"></i> 注册试用
                 </a>
             </div>
         </div>
@@ -188,7 +169,7 @@
         <div class="row">
             <div class="col-lg-12 text-center">
                 <h2>注册登录</h2>
-                <hr class="star-primary">
+                <hr style="width: 30%;">
             </div>
         </div>
         <div class="row">
@@ -198,29 +179,24 @@
                 <form name="sentMessage" id="contactForm" novalidate>
                     <div class="row control-group">
                         <div class="form-group col-xs-12 floating-label-form-group controls">
-                            <label>用户名</label>
-                            <input type="text" class="form-control" placeholder="Name" id="name" required data-validation-required-message="请输入用户名.">
+                            <label>邮箱</label>
+                            <input type="email" class="form-control" placeholder="邮箱" id="name" required data-validation-required-message="请输入邮箱">
                             <p class="help-block text-danger"></p>
                         </div>
                     </div>
                     <div class="row control-group">
                         <div class="form-group col-xs-12 floating-label-form-group controls">
                             <label>密码</label>
-                            <input type="email" class="form-control" placeholder="密码" id="email" required data-validation-required-message="请输入密码">
+                            <input type="password" class="form-control" name="password" placeholder="密码" id="password" required data-validation-required-message="请输入密码">
                             <p class="help-block text-danger"></p>
                         </div>
                     </div>
                     <div class="row control-group">
                         <div class="form-group col-xs-12 floating-label-form-group controls">
                             <label>确认密码</label>
-                            <input type="tel" class="form-control" placeholder="确认密码" id="phone" required data-validation-required-message="请输入密码">
-                            <p class="help-block text-danger"></p>
-                        </div>
-                    </div>
-                    <div class="row control-group">
-                        <div class="form-group col-xs-12 floating-label-form-group controls">
-                            <label>个人简介</label>
-                            <textarea rows="5" class="form-control" placeholder="个人信息" id="message" required data-validation-required-message="Please enter a message."></textarea>
+                            <input type="password" class="form-control" placeholder="确认密码" id="phone"
+                                   required data-validation-required-message="请确认密码"
+                                   data-validation-match-match="password" data-validation-match-message="密码不一致">
                             <p class="help-block text-danger"></p>
                         </div>
                     </div>
@@ -229,7 +205,7 @@
                     <div class="row">
                         <div class="form-group col-xs-12">
                             <button type="submit" class="btn btn-success btn-lg">注册</button>
-                            <button type="submit" class="btn btn-success btn-lg">已有帐号，登录</button>
+                            <a type="button" href="/login" class="btn btn-success btn-lg">已有帐号，登录</a>
                         </div>
                     </div>
                 </form>
@@ -245,19 +221,24 @@
             <div class="row">
                 <div class="footer-col col-md-4">
                     <h3>联系我们</h3>
-                    <p>QQ <a>798207330</a></p>
+                    <p class="" >
+                        <a href="#"><i class="fa fa-fw fa-qq "></i></a>
+                        <a>798207330</a></p>
+                    <p >
+                        <a href="#"><i class="fa fa-envelope "></i></a>
+                        <a>798207330@qq.com </a></p>
                 </div>
                 <div class="footer-col col-md-4">
                     <h3>分享给好友</h3>
                     <ul class="list-inline">
                         <li>
-                            <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-facebook"></i></a>
+                            <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-qq "></i></a>
                         </li>
                         <li>
-                            <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-google-plus"></i></a>
+                            <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-weibo"></i></a>
                         </li>
                         <li>
-                            <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-twitter"></i></a>
+                            <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-weixin"></i></a>
                         </li>
                         <li>
                             <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-linkedin"></i></a>
@@ -268,8 +249,21 @@
                     </ul>
                 </div>
                 <div class="footer-col col-md-4">
-                    <h3>友情链接</h3>
-                    <p> <a href="http://startbootstrap.com">Start Bootstrap</a>.</p>
+                    <h3>赞助商</h3>
+                    <ul class="list-inline ">
+                        <li>
+                            <a href="#" class="btn-social btn-outline "><i class="fa fa-fw fa-git"></i></a>
+                        </li>
+                        <li>
+                            <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-github"></i></a>
+                        </li>
+                        <li>
+                            <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-linux"></i></a>
+                        </li>
+                        <li>
+                            <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-html5"></i></a>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -334,25 +328,17 @@
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2">
                     <div class="modal-body">
-                        <h2>Project Title</h2>
+                        <h2>第二步</h2>
                         <hr class="star-primary">
                         <img src="/resources/assert/img/index/portfolio/cake.png" class="img-responsive img-centered" alt="">
-                        <p>Use this area of the page to describe your project. The icon above is part of a free icon set by <a href="https://sellfy.com/p/8Q9P/jV3VZ/">Flat Icons</a>. On their website, you can download their free set with 16 icons, or you can purchase the entire set with 146 icons for only $12!</p>
+                        <p>根据您的使用设备,安装相对应平台的客户端!</p>
                         <ul class="list-inline item-details">
-                            <li>Client:
-                                <strong><a href="http://startbootstrap.com">Start Bootstrap</a>
-                                </strong>
-                            </li>
-                            <li>Date:
-                                <strong><a href="http://startbootstrap.com">April 2014</a>
-                                </strong>
-                            </li>
-                            <li>Service:
-                                <strong><a href="http://startbootstrap.com">Web Development</a>
+                            <li>下一步:
+                                <strong><a href="#">Next</a>
                                 </strong>
                             </li>
                         </ul>
-                        <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> 关闭</button>
                     </div>
                 </div>
             </div>
@@ -371,21 +357,13 @@
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2">
                     <div class="modal-body">
-                        <h2>Project Title</h2>
+                        <h2>第三步</h2>
                         <hr class="star-primary">
                         <img src="/resources/assert/img/index/portfolio/circus.png" class="img-responsive img-centered" alt="">
-                        <p>Use this area of the page to describe your project. The icon above is part of a free icon set by <a href="https://sellfy.com/p/8Q9P/jV3VZ/">Flat Icons</a>. On their website, you can download their free set with 16 icons, or you can purchase the entire set with 146 icons for only $12!</p>
+                        <p>建设中....</p>
                         <ul class="list-inline item-details">
-                            <li>Client:
-                                <strong><a href="http://startbootstrap.com">Start Bootstrap</a>
-                                </strong>
-                            </li>
-                            <li>Date:
-                                <strong><a href="http://startbootstrap.com">April 2014</a>
-                                </strong>
-                            </li>
-                            <li>Service:
-                                <strong><a href="http://startbootstrap.com">Web Development</a>
+                            <li>下一步:
+                                <strong><a href="#">Next</a>
                                 </strong>
                             </li>
                         </ul>
@@ -408,21 +386,13 @@
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2">
                     <div class="modal-body">
-                        <h2>Project Title</h2>
+                        <h2>第四步</h2>
                         <hr class="star-primary">
                         <img src="/resources/assert/img/index/portfolio/game.png" class="img-responsive img-centered" alt="">
-                        <p>Use this area of the page to describe your project. The icon above is part of a free icon set by <a href="https://sellfy.com/p/8Q9P/jV3VZ/">Flat Icons</a>. On their website, you can download their free set with 16 icons, or you can purchase the entire set with 146 icons for only $12!</p>
+                        <p>建设中...</p>
                         <ul class="list-inline item-details">
-                            <li>Client:
-                                <strong><a href="http://startbootstrap.com">Start Bootstrap</a>
-                                </strong>
-                            </li>
-                            <li>Date:
-                                <strong><a href="http://startbootstrap.com">April 2014</a>
-                                </strong>
-                            </li>
-                            <li>Service:
-                                <strong><a href="http://startbootstrap.com">Web Development</a>
+                            <li>下一步:
+                                <strong><a href="#">Next</a>
                                 </strong>
                             </li>
                         </ul>
@@ -445,21 +415,13 @@
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2">
                     <div class="modal-body">
-                        <h2>Project Title</h2>
+                        <h2>第五步</h2>
                         <hr class="star-primary">
                         <img src="/resources/assert/img/index/portfolio/safe.png" class="img-responsive img-centered" alt="">
-                        <p>Use this area of the page to describe your project. The icon above is part of a free icon set by <a href="https://sellfy.com/p/8Q9P/jV3VZ/">Flat Icons</a>. On their website, you can download their free set with 16 icons, or you can purchase the entire set with 146 icons for only $12!</p>
+                        <p>建设中!</p>
                         <ul class="list-inline item-details">
-                            <li>Client:
-                                <strong><a href="http://startbootstrap.com">Start Bootstrap</a>
-                                </strong>
-                            </li>
-                            <li>Date:
-                                <strong><a href="http://startbootstrap.com">April 2014</a>
-                                </strong>
-                            </li>
-                            <li>Service:
-                                <strong><a href="http://startbootstrap.com">Web Development</a>
+                            <li>下一步:
+                                <strong><a href="#">Next</a>
                                 </strong>
                             </li>
                         </ul>
@@ -482,23 +444,12 @@
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2">
                     <div class="modal-body">
-                        <h2>Project Title</h2>
+                        <h2>请尽情使用吧</h2>
                         <hr class="star-primary">
                         <img src="/resources/assert/img/index/portfolio/submarine.png" class="img-responsive img-centered" alt="">
-                        <p>Use this area of the page to describe your project. The icon above is part of a free icon set by <a href="https://sellfy.com/p/8Q9P/jV3VZ/">Flat Icons</a>. On their website, you can download their free set with 16 icons, or you can purchase the entire set with 146 icons for only $12!</p>
+                        <p>Expore all over the world !</p>
                         <ul class="list-inline item-details">
-                            <li>Client:
-                                <strong><a href="http://startbootstrap.com">Start Bootstrap</a>
-                                </strong>
-                            </li>
-                            <li>Date:
-                                <strong><a href="http://startbootstrap.com">April 2014</a>
-                                </strong>
-                            </li>
-                            <li>Service:
-                                <strong><a href="http://startbootstrap.com">Web Development</a>
-                                </strong>
-                            </li>
+
                         </ul>
                         <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
                     </div>
@@ -506,8 +457,14 @@
             </div>
         </div>
     </div>
-</div>f
+</div>
 
+
+</body>
+
+#end
+
+#define($js)
 <!-- jQuery -->
 <script src="/resources/assert/js/index/jquery.js"></script>
 
@@ -526,8 +483,4 @@
 <!-- Custom Theme JavaScript -->
 <script src="/resources/assert/js/index/freelancer.js"></script>
 
-</body>
-
-</html>
 #end
-
